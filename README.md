@@ -4,8 +4,9 @@ This lab exercise consists of 10% of my final grade.
 
 ## Lab 2
 
-###`We would like to create an interactive game where a character is controlled by the player to achieve an objective. It promotes object programming with JavaScript and the use of the DOM API. The characters are bees and a bear. The bees fly randomly in all directions to attack the bear. The bear is controlled by the user and can move up, down, left, and right while staying in the game board to avoid being bitten by bees. The objective of the player is to minimize the number of stings. The winner is the player who manages to have less stings. The user must be able to adjust, on the run, the speed of the bees and the frequency of the game update loop. They can also restart the game and set any the number of bees to play with. Bees appear at random positions in the board and move continuously and randomly in the four directions. The application should detect any sting (overlap between a bee and the bear images). The number of stings is displayed continuously. The duration between two stings is also calculated. The longest period without stings is kept as the best score. The largest duration is displayed and refreshed every time it changes. The user can add bees at any time without restarting the game.`
-###HTML & CSS
+`We would like to create an interactive game where a character is controlled by the player to achieve an objective. It promotes object programming with JavaScript and the use of the DOM API. The characters are bees and a bear. The bees fly randomly in all directions to attack the bear. The bear is controlled by the user and can move up, down, left, and right while staying in the game board to avoid being bitten by bees. The objective of the player is to minimize the number of stings. The winner is the player who manages to have less stings. The user must be able to adjust, on the run, the speed of the bees and the frequency of the game update loop. They can also restart the game and set any the number of bees to play with. Bees appear at random positions in the board and move continuously and randomly in the four directions. The application should detect any sting (overlap between a bee and the bear images). The number of stings is displayed continuously. The duration between two stings is also calculated. The longest period without stings is kept as the best score. The largest duration is displayed and refreshed every time it changes. The user can add bees at any time without restarting the game.`
+
+*HTML & CSS*
 
 - Create the web page of the game.
 - Using HTML and CSS, start creating a web page that looks like the above, with preferably three div
@@ -14,7 +15,9 @@ This lab exercise consists of 10% of my final grade.
 - div scores
 - div board
 - Add the bear image to the board div
-  ###Bear motion
+
+*BEAR MOTION*
+
 - We first create JavaScript code to control the movement of the bear.
   Create the file game.js and link it to the HTML file by adding the following to the head
   section.
@@ -42,7 +45,9 @@ This lab exercise consists of 10% of my final grade.
 - We call this function from the move() method.
 - Create an input field for the user to enter the speed (dBear) of the bear. Make the
   necessary changes to read the value entered by the user to modify dBear.
-  ###Adding bees to the board.
+  
+*ADDING BEES TO THE BOARD*
+
 - The Bee class allows creating and controlling instances of bee objects (IMG tags in the
   HTML file). We first add the Bee class to game.js.
 - The class has attributes of the bee IMG element from the HTML file and methods to move
@@ -55,7 +60,9 @@ This lab exercise consists of 10% of my final grade.
   global variable (var bees;) in the <script> tag I the header section of the HTML.
 - The actual creation of the bees is done in the method makeBees().
 - For this to work, we need to call makeBees() from the start() function.
-  ###Animate the bees.
+  
+*ANIMATE THE BEES*
+  
 - We first write a function moveBees() that displaces each bee to a random location (dx, dy).
   Notice the use of the speedBees input value to control the speed of the motion.
 - To get the bees to move continuously, we will use a timer.
@@ -63,7 +70,9 @@ This lab exercise consists of 10% of my final grade.
   initial call to updateBees() is done in the start() function.
 - Change the code in updateBees() to use the input field periodTimer instead of the fixed
   period (10).
-  ###Count the stings.
+  
+*COUNT THE STINGS*
+  
 - We consider that whenever a bee image intersects with the bear image a sting has happened.
   We would like to count the stings and display the number in the “hits” span element of the
   HTML file.
@@ -76,10 +85,14 @@ This lab exercise consists of 10% of my final grade.
 - To count the stings, we call the isHit() method when we move each bee in moveBees().
 - Change the code to stop the game and display “Game over!”, when the number of stings
   reaches 1000.
-  ###Calculating the longest escape duration.
+  
+*Calculating the longest escape duration*
+  
 - In addition to the number of stings, we would like to measure and display the longest
   duration the player manages to hold between two consecutive stings. For this, we modify the
   isHit() method.
-  ###Additional features.
+  
+*Additional features*
+  
 - Create a “restart” button in the HTML file to re-initialise the game.
 - Create a “restart” button in the HTML file to re-initialise the game.
