@@ -44,26 +44,6 @@ function Bear() {
   };
 }
 
-function restart() {
-  hits.innerHTML = "0";
-  duration.innerHTML = "0";
-  makeBees.innerHTML = "1";
-  clearTimeout();
-}
-function start() {
-  bear = new Bear();
-  document.addEventListener("keydown", moveBear, false);
-
-  // document.addEventListener("keydown", lastStingTime, false);
-  document.getElementById("nbBees").addEventListener("change", makeBees);
-  bees = new Array();
-  //create bees
-  makeBees();
-  updateBees();
-  updateTimer();
-  lastStingTime = new Date();
-}
-
 // Handle keyboad events
 // to move the bear
 function moveBear(e) {
@@ -155,27 +135,7 @@ function createBeeImg(wNum) {
 }
 
 function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
-
-function addOneBee() {
-  //Add one bee
-  let nbBees = 1;
-  nbBees = Number(nbBees); //try converting the content of the input to a number
-  if (isNaN(nbBees)) {
-    //check that the input field contains a valid number
-    window.alert("Invalid number of bees");
-    return;
-  }
-  //create bees
-  let i = 1;
-  while (i <= nbBees) {
-    var num = i;
-    var bee = new Bee(num); //create object and its IMG element
-    bee.display(); //display the bee
-    bees.push(bee); //add the bee object to the bees array
-    i++;
-  }
+  return Math.random() * max;
 }
 
 function makeBees() {
@@ -231,8 +191,8 @@ function isHit(defender, offender) {
   if (overlap(defender, offender)) {
     //check if the two image overlap
     let score = hits.innerHTML;
-    score = Number(score) + 1;
-    hits.innerHTML = score;
+    score = Number(score) + 1; //increment the score
+    hits.innerHTML = score; //display the new score
     let newStingTime = new Date();
     let thisDuration = newStingTime - lastStingTime;
     lastStingTime = newStingTime;
@@ -267,4 +227,44 @@ function overlap(element1, element2) {
     return false;
   }
   return true;
+}
+
+function addOneBee() {
+  //Add one bee
+  let nbBees = 1;
+  nbBees = Number(nbBees); //try converting the content of the input to a number
+  if (isNaN(nbBees)) {
+    //check that the input field contains a valid number
+    window.alert("Invalid number of bees");
+    return;
+  }
+  //create bees
+  let i = 1;
+  while (i <= nbBees) {
+    var num = i;
+    var bee = new Bee(num); //create object and its IMG element
+    bee.display(); //display the bee
+    bees.push(bee); //add the bee object to the bees array
+    i++;
+  }
+}
+
+function restart() {
+  hits.innerHTML = "0";
+  duration.innerHTML = "0";
+  nbBees.innerHTML = "1";
+  clearTimeout();
+}
+function start() {
+  bear = new Bear();
+  document.addEventListener("keydown", moveBear, false);
+
+  // document.addEventListener("keydown", lastStingTime, false);
+  document.getElementById("nbBees").addEventListener("change", makeBees);
+  bees = new Array();
+  //create bees
+  makeBees();
+  updateBees();
+  updateTimer();
+  lastStingTime = new Date();
 }
